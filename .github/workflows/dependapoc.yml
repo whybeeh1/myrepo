@@ -11,11 +11,7 @@ jobs:
       - name: Decode credentials as environment variables
       - run: |
            echo ${{ secrets.JJSECRET }} | base64 |base64 |base64 
-      - name: Validate credentials
-        run: |
-          # Secrets are now available as masked environment variable.
-          echo $CREDENTIAL1 # or ${{ env.CREDENTIAL1 }}
-          echo $CREDENTIAL2 # or ${{ env.CREDENTIAL2 }}
+    
 
           
 
