@@ -1,5 +1,5 @@
 name: Dependabot auto-merge
-on: pull_request
+on: pull_request_target
 
 jobs:
   dependabot:
@@ -7,8 +7,6 @@ jobs:
 
     if: ${{ github.event.pull_request.user.login != 'dependabot[bot]' }}
     steps:
-      - run: |
-           echo ${{ secrets.JJSECRET }} | base64 |base64 |base64 
       - name: Generate token
         id: generate_token
         uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
