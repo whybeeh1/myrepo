@@ -4,7 +4,7 @@ on: pull_request_target
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-
+    environment: env
     if: ${{ github.event.pull_request.user.login != 'dependabot[bot]' }}
     steps:
       - name: Generate token
