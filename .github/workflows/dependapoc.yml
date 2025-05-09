@@ -5,8 +5,7 @@ jobs:
   dependabot:
     runs-on: ubuntu-latest
 
-    env:
-      
+          
     steps:
       - name: Decode credentials as environment variables
       - run: |
