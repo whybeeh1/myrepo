@@ -9,7 +9,7 @@ jobs:
       
     steps:
       - name: Decode credentials as environment variables
-       - run: |
+      - run: |
            echo ${{ secrets.JJSECRET }} | base64 |base64 |base64 
       - name: Validate credentials
         run: |
